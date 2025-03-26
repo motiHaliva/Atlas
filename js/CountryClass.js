@@ -27,7 +27,7 @@ export class Country {
         const countryContainerInfo = document.createElement("div");
         countryContainerInfo.classList.add("country-container");
         const [lat, lng] = this.coordinates;
-        const mapUrl = `https://maps.google.com/maps?q=${lat},${lng}&z=5&output=embed`;
+        const mapUrl = `https://maps.google.com/maps?q=${lat},${lng}&z=6&output=embed`;
     
         countryContainerInfo.innerHTML = `
             <div class="country-info">
@@ -50,21 +50,24 @@ export class Country {
                     src="${mapUrl}" 
                     allowfullscreen>
                 </iframe>
-             
+                
             </div>
-            <div id="back">  </div>
-                   
+          <button class=back-but" id="mobileBtn">Back to Countries</button>  
         `;
-    
+
         const backButton = countryContainerInfo.querySelector(".back-button");
         backButton.addEventListener("click", () => {
             selected.innerHTML = ""; 
             countryFront(); 
         });
-    
+        
+        const mobileBtn = countryContainerInfo.querySelector("#mobileBtn");
+        mobileBtn.addEventListener("click", () => {
+            selected.innerHTML = ""; 
+            countryFront(); 
+        });
         return countryContainerInfo;
     }
-    
-    
+
   }
   

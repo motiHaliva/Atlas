@@ -31,6 +31,9 @@ html, body {
     font-size: 20px; 
     transition: 0.3s;
 }
+.country-button{
+  border:  20px solid rgb(199, 37, 37);
+}
 
 
 .navbar-nav .nav-link,
@@ -48,6 +51,7 @@ html, body {
     text-align: center;
     width: 70%;
     margin: auto;
+   
 }
 .country-container{
     display: flex;
@@ -63,6 +67,7 @@ margin: 10px;
   width: 300px;
 }
  #selected-country-container {
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -82,6 +87,7 @@ margin: 10px;
      max-width: 780px; 
     width: 100%;
     text-align: center;
+    border: solid 2px red;
   }
 
   h2 {
@@ -118,8 +124,6 @@ margin: 10px;
     width: 450px;
     height: 400px;
     border-radius: 10px;
-    /* overflow: hidden; */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     margin: 15px;
   }
   
@@ -156,6 +160,7 @@ margin: 10px;
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0.9, 0.7, 0.8);
   }
   
   .country-button:hover {
@@ -165,8 +170,36 @@ margin: 10px;
     color: white;
     font-size: 40px;
     font-weight: bold;
-margin-top: 200px;
-
+    margin-top: 200px;
   }
+  #mobileBtn{
+    color: white;
+    display: none;
+    background:rgb(0, 13, 46);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 15px;
+  }
+  #mobileBtn:hover {
+    transform: scale(1.05);
+  } 
+  @media (max-width: 480px) {
+    .country-container{
+      flex-direction: column;
+    }
+    iframe{
+      width:
+       60%;
+       height: 90%;
+    }
+    .back-button{
+      display: none;
+    }
+    #mobileBtn{
+     display: flex;
+    }
+}
+  
 
 
