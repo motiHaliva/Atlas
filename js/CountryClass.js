@@ -1,14 +1,15 @@
 import { countryFront } from "./script.js";
 import { fetchByCode } from "./script.js";
+import{fetchWeather}from "./script.js";
 
 export class Country {
     constructor(name, population, capital, flag, mapLink, language ,currencies,coordinates,borderCountries) {
       this.name = name;
-      this.population = population || "Not available"; 
-      this.capital = capital || "Not available";  
-      this.flag = flag || "";  
-      this.mapLink = mapLink || "#";  
-      this.language = language || "Not available";  
+      this.population = population; 
+      this.capital = capital;  
+      this.flag = flag;  
+      this.mapLink = mapLink;  
+      this.language = language ;  
       this.currencies=currencies;
       this.coordinates=coordinates;
       this.borderCountries=borderCountries||"";
@@ -40,6 +41,7 @@ export class Country {
         const [lat, lng] = this.coordinates;
         const mapUrl = `https://maps.google.com/maps?q=${lat},${lng}&z=6&output=embed`;
         const bordersLinks = this.createBordersLinks();
+        const Weather = fetchWeather(this.name);
     
         countryContainerInfo.innerHTML = `
             <div class="country-info">
@@ -52,6 +54,7 @@ export class Country {
                     <p><strong>Capital:</strong> ${this.capital}</p>
                     <p><strong>Language:</strong> ${this.language}</p>
                     <p><strong>Currencies:</strong> ${this.currencies}</p>
+                      <p id="weatherInfo">${Weather}</p>
              <div class="borders-links">
                         <strong>Border Countries:</strong><br>
                         ${bordersLinks}
@@ -85,8 +88,7 @@ export class Country {
             document.querySelectorAll(".border-country").forEach(link => {
                 link.addEventListener("click", (event) => {
                     event.preventDefault();
-                    const cca3 = event.target.getAttribute("data-cca3");
-                    fetchByCode(cca3); 
+                    fetchByCode(event.target.textContent); 
                 });
             });
          }, 0);

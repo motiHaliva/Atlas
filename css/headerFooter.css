@@ -1,0 +1,18 @@
+
+
+.footer {
+    margin-top: auto; 
+    background-color:rgb(0, 13, 46);
+ 
+    font-size: 14px; 
+}
+.navbar-nav .nav-link,
+.navbar-brand {
+    color: white !important;
+gap: 10px;
+}
+.dropdown{
+    margin-right: 20px;
+    margin-top: 2px;
+    width: 100%;
+}

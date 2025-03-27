@@ -11,64 +11,37 @@ html, body {
     background-size: cover;
     background-position: center center;
 }
-.header{
-    color: white !important;
-    background-color: rgb(219, 105, 23) ;
-
-}
-.dropdown-menu{
-    color: black  !important;
-}
 .footer {
     margin-top: auto; 
-    background-color:rgb(0, 13, 46);
- 
-    padding: 0;
-    font-size: 14px; 
-}
-.social-icons a {
-    text-decoration: none;
-    color: white;
-    font-size: 20px; 
-    transition: 0.3s;
-}
-.country-button{
-  /* border:  20px solid rgb(199, 37, 37); */
-}
-
-
+     background-color:rgb(0, 13, 46);
+    font-size: 14px;  
+} 
 .navbar-nav .nav-link,
 .navbar-brand {
     color: white !important;
 gap: 10px;
+transition: transform 0.2s ease-in-out;
 }
+
 .dropdown{
     margin-right: 20px;
     margin-top: 2px;
     width: 100%;
 }
 
-
-#countries-container{
+ #countries-container{
    margin-top: 20px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
- justify-content: center;
+    justify-content: center;
     gap: 70px;
     text-align: center;
     width: 70%;
     margin: auto;
    
-}
-.country-container{
-    display: flex;
-margin: 10px;
-}
-.country-info{
-    color: white;
+} 
 
-}
 #country-select{
     margin-right: 150px;
 }
@@ -78,7 +51,6 @@ margin: 10px;
   width: 300px;
 }
  #selected-country-container {
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -98,7 +70,6 @@ margin: 10px;
      max-width: 780px; 
     width: 100%;
     text-align: center;
-    /* border: solid 2px red; */
   }
 
   h2 {
@@ -130,10 +101,9 @@ margin: 10px;
   }
   
   .country-map-container {
-    margin-top: 15px;
     width: 100%;
     width: 450px;
-    height: 400px;
+    height: 450px;
     border-radius: 10px;
     margin: 15px;
   }
