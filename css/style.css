@@ -1,4 +1,5 @@
-*{
+
+ *{
     box-sizing: border-box;
 }
 html, body {
@@ -32,13 +33,20 @@ html, body {
     transition: 0.3s;
 }
 .country-button{
-  border:  20px solid rgb(199, 37, 37);
+  /* border:  20px solid rgb(199, 37, 37); */
 }
 
 
 .navbar-nav .nav-link,
 .navbar-brand {
-    color: white !important; }
+    color: white !important;
+gap: 10px;
+}
+.dropdown{
+    margin-right: 20px;
+    margin-top: 2px;
+    width: 100%;
+}
 
 
 #countries-container{
@@ -60,6 +68,9 @@ margin: 10px;
 .country-info{
     color: white;
 
+}
+#country-select{
+    margin-right: 150px;
 }
 
 .country-flag{
@@ -87,7 +98,7 @@ margin: 10px;
      max-width: 780px; 
     width: 100%;
     text-align: center;
-    border: solid 2px red;
+    /* border: solid 2px red; */
   }
 
   h2 {
@@ -203,3 +214,4 @@ margin: 10px;
   
 
 
+ 
