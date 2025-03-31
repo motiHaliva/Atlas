@@ -15,11 +15,12 @@ html, body {
   overflow-x: hidden; 
 }
 header {
+  background-color:rgba(0, 8, 37, 0.493) ;
   position: sticky;
   top: 0;
   left: 0;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
 }
 .footer {
@@ -59,6 +60,7 @@ transition: transform 0.2s ease-in-out;
 .country-flag{
   height: 170px;
   width: 300px;
+  /* display: none; */
 }
  #selected-country-container {
     display: flex;
@@ -123,6 +125,7 @@ transition: transform 0.2s ease-in-out;
     margin: 15px;
     display: flex;
     justify-content: center;
+
   }
   
   iframe {
@@ -212,10 +215,16 @@ transition: transform 0.2s ease-in-out;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 250px;
 }
   @media (max-width: 480px) {
+    header{
+      background-color:rgba(0, 8, 37, 0.281) ;
+    }
     .country-container{
       flex-direction: column;
+      display: flex;
+      justify-content: center;
     }
     iframe{
       width:

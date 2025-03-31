@@ -11,8 +11,11 @@ let allCountries = [];
 
 const createFetch = async () => {
     try {
+    
         const response = await fetch(allUrl); 
-        const res = await response.json();  
+        const res = await response.json(); 
+   
+        
         allCountries = res.filter((country) => country.name.common.toUpperCase() !== "PALESTINE");
         frontCountries = res.filter((country) =>
             countriesToDisplay.includes(country.name.common.toUpperCase())
@@ -123,6 +126,8 @@ const countryByInfo = () => {
 
     const locationButton = document.getElementById("location-btn");
     if (locationButton) {
+        console.log("Location button found");
+        
         locationButton.addEventListener("click", () => getCurrentLocations());
     }
 };
@@ -163,6 +168,10 @@ export const getCurrentCoordinates = () => {
   };
   getCurrentCoordinates()
   export const getCurrentLocations = async () => {
+    deleteContainer()
+    selectedContainer.innerHTML=`
+    <img id="imgLoad" width="100" src="https://raw.githubusercontent.com/Codelessly/FlutterLoadingGIFs/master/packages/cupertino_activity_indicator_large.gif " alt="loading"></div>
+    `
     try {
       const coordinates = await getCurrentCoordinates();
       console.log(coordinates);
@@ -181,7 +190,6 @@ export const getCurrentCoordinates = () => {
       console.error("Error fetching location data:", error); 
     }
   };
-
 
 
 createFetch();

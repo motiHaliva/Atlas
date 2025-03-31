@@ -28,9 +28,12 @@ export class Country {
         const button = document.createElement("div");
         button.classList.add("country-button"); 
         button.innerHTML = `
-            <img src="${this.flag}" alt="Flag of ${this.name}" class="country-flag" />
+    
+       <div class="country-header">
+        <img src="${this.flag}" alt="Flag of ${this.name}" class="country-flag" />
             <h2>${this.name}</h2>
-        `;
+        <div>`;
+    
         return button;
     }
 
@@ -109,5 +112,4 @@ export class Country {
 
     }
 
-  }
-  
+}
