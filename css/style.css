@@ -2,14 +2,25 @@
  *{
     box-sizing: border-box;
 }
+
 html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    background-image: url("../images/2.jpg");
-    background-size: cover;
-    background-position: center center;
+  height: 100%;
+  margin: 0;
+  padding: 0; 
+  display: flex;
+  flex-direction: column;
+  background-image: url("../images/2.jpg");
+  background-size: cover;
+  background-position: center center;
+  overflow-x: hidden; 
+}
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  margin-bottom: 20px;
 }
 .footer {
     margin-top: auto; 
@@ -30,7 +41,6 @@ transition: transform 0.2s ease-in-out;
 }
 
  #countries-container{
-   margin-top: 20px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -84,6 +94,11 @@ transition: transform 0.2s ease-in-out;
     font-size: 16px;
     color: #555;
     line-height: 1.6;
+    
+  }
+  .country-details-container{
+    height: 170px;
+    overflow: scroll;
   }
   
   .country-details p {
@@ -143,6 +158,22 @@ transition: transform 0.2s ease-in-out;
     cursor: pointer;
     box-shadow: 0px 4px 10px rgba(0, 0.9, 0.7, 0.8);
   }
+  .country-button ,.country-container{
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
   
   .country-button:hover {
     transform: scale(1.05);
@@ -165,6 +196,21 @@ transition: transform 0.2s ease-in-out;
   #mobileBtn:hover {
     transform: scale(1.05);
   } 
+  #location-btn{
+    margin-left: 10px;
+  }
+  #imgLoad{
+    color: tomato;
+  }
+  .map-loader {
+    top: 0;
+    left: 20%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
   @media (max-width: 480px) {
     .country-container{
       flex-direction: column;
@@ -180,6 +226,10 @@ transition: transform 0.2s ease-in-out;
     #mobileBtn{
      display: flex;
     }
+    #location-btn{
+   margin-top: 5px;
+    }
+
 }
   
 

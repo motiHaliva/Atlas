@@ -2,7 +2,6 @@
 import { Country } from "./CountryClass.JS";
 
 const allUrl = `https://restcountries.com/v3.1/all`;
-
 const countriesToDisplay = ["ISRAEL", "UNITED STATES", "THAILAND", "FRANCE"];
 const arrayCode=["USA","ISR","THA","FRA"];
 const selectedContainer = document.getElementById("selected-country-container");
@@ -10,20 +9,21 @@ const container = document.getElementById("countries-container");
 let frontCountries = [];
 let allCountries = [];
 
-const createFetch = () => {
-    fetch(allUrl)
-        .then((res) => res.json())
-        .then((res) => {
-            allCountries = res.filter((country) => country.name.common.toUpperCase() !== "PALESTINE");
-            frontCountries = res.filter((country) =>
-                countriesToDisplay.includes(country.name.common.toUpperCase())
-            );
-            allCountries.sort((a, b) => a.name.common.localeCompare(b.name.common));
-            countryFront();
-            countryByInfo();
-            linkMenu();
-        })
-        .catch((error) => console.error("Error fetching country data:", error));
+const createFetch = async () => {
+    try {
+        const response = await fetch(allUrl); 
+        const res = await response.json();  
+        allCountries = res.filter((country) => country.name.common.toUpperCase() !== "PALESTINE");
+        frontCountries = res.filter((country) =>
+            countriesToDisplay.includes(country.name.common.toUpperCase())
+        );
+        allCountries.sort((a, b) => a.name.common.localeCompare(b.name.common));
+        countryFront();
+        countryByInfo();
+        linkMenu();
+    } catch (error) {
+        console.error("Error fetching country data:", error); 
+    }
 };
 
 const createCountryObject = (countryData) => {
@@ -120,24 +120,68 @@ const countryByInfo = () => {
             element.addEventListener("click", () => fetchByCode(code));
         }
     });
+
+    const locationButton = document.getElementById("location-btn");
+    if (locationButton) {
+        locationButton.addEventListener("click", () => getCurrentLocations());
+    }
 };
-const API_KEY = "f138b36e05875e65f09064edfc925e31";
-export const fetchWeather = (city) => {
+
+export const fetchWeather = async (city) => {
+    const API_KEY = "f138b36e05875e65f09064edfc925e31";
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=en`;
 
-   fetch(url)
-        .then(response => response.json())
-        .then(data => {  
-            const weatherInfo = document.getElementById("weatherInfo");
-            weatherInfo.innerHTML = `
-                <p> <strong>Temperature:</strong> ${data.main.temp}°C</p>
-                <p> <strong>Description:</strong> ${data.weather[0].description}</p>
-            `;  
-        })
-        .catch(error => {
-            console.error('Error fetching weather data:', error);
-        });
+    try {
+        const response = await fetch(url);  
+        const data = await response.json(); 
+      renderWeather(data);
+    } catch (error) {
+        console.error('Error fetching weather data:', error); 
+    }
 };
+const renderWeather = (data) => {
+    const weatherInfo = document.getElementById("weatherInfo");
+    weatherInfo.innerHTML = `
+        <p><strong>Temperature:</strong> ${data.main.temp}°C</p>
+        <p><strong>Description:</strong> ${data.weather[0].description}</p>
+    `;
+}
+export const getCurrentCoordinates = () => {
+    return new Promise((resolve, reject) => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {     
+            const coordinates = {
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude
+            };
+            resolve(coordinates);
+          },
+        );
+      } 
+    });
+  };
+  getCurrentCoordinates()
+  export const getCurrentLocations = async () => {
+    try {
+      const coordinates = await getCurrentCoordinates();
+      console.log(coordinates);
+      
+      const { latitude, longitude } = coordinates;
+      const url = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log(data.
+        countryName);
+      if (data.countryName) {
+        fetchByCountry(data.countryName);
+      }
+    } 
+    catch (error) {
+      console.error("Error fetching location data:", error); 
+    }
+  };
+
 
 
 createFetch();

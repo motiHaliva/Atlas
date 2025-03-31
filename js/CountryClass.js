@@ -49,6 +49,7 @@ export class Country {
                     <img src="${this.flag}" alt="Flag of ${this.name}" class="country-flag" />
                     <h2>${this.name}</h2>
                 </div>
+                <div class="country-details-container">
                 <div class="country-details">
                     <p><strong>Population:</strong> ${this.population}</p>
                     <p><strong>Capital:</strong> ${this.capital}</p>
@@ -59,20 +60,24 @@ export class Country {
                         <strong>Border Countries:</strong><br>
                         ${bordersLinks}
                     </div>
-                    <p><strong>External Map:</strong> <a href="${this.mapLink}" target="_blank">View on Google Maps</a></p>
-                    <button class="back-button">Back to Countries</button>
                 </div>
+                 
+                </div>
+                   <p><strong>External Map:</strong> <a href="${this.mapLink}" target="_blank">View on Google Maps</a></p>
+                    <button class="back-button">Back to Countries</button>
             </div>
             <div class="country-map-container">
-                <iframe 
-                    src="${mapUrl}" 
+                <div class="map-loader">
+                    <img id="imgLoad" width="100" src="https://raw.githubusercontent.com/Codelessly/FlutterLoadingGIFs/master/packages/cupertino_activity_indicator_large.gif " alt="loading"></div>
+                <iframe class="country-map"
+                    src="${mapUrl}"
                     allowfullscreen>
                 </iframe>
-                
             </div>
           <button class=back-but" id="mobileBtn">Back to Countries</button>  
         `;
-
+        selected.appendChild(countryContainerInfo);
+        this.loadMap();
         const backButton = countryContainerInfo.querySelector(".back-button");
         backButton.addEventListener("click", () => {
             selected.innerHTML = ""; 
@@ -93,6 +98,15 @@ export class Country {
             });
          }, 0);
         return countryContainerInfo;
+    }
+     loadMap=()=>{
+        const mapFrame = document.querySelector(".country-map");
+        const loaderMap =document.querySelector(".map-loader");
+        mapFrame.onload = function() {
+            loaderMap.style.display = "none";
+            mapFrame.style.display = "block";
+        }; 
+
     }
 
   }
