@@ -121,6 +121,8 @@ transition: transform 0.2s ease-in-out;
     height: 450px;
     border-radius: 10px;
     margin: 15px;
+    display: flex;
+    justify-content: center;
   }
   
   iframe {
@@ -219,6 +221,7 @@ transition: transform 0.2s ease-in-out;
       width:
        60%;
        height: 90%;
+   
     }
     .back-button{
       display: none;
