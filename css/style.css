@@ -217,6 +217,14 @@ transition: transform 0.2s ease-in-out;
     align-items: center;
     margin-left: 250px;
 }
+.btn{
+  background-color: aliceblue;
+}
+.fa-map-marker-alt {
+  font-size: 10px;
+  color: rgb(29, 25, 25); 
+
+}
   @media (max-width: 480px) {
     header{
       background-color:rgba(0, 8, 37, 0.281) ;
